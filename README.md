@@ -52,10 +52,10 @@ select 允许单线程，处理多个select。如果你打开多个连接(通道
 **java NIO  vs IO**
 下面总结了NIO 和IO的主要区别
 
-IO|NIO
+NIO|IO
 ---|---
-Stream oriented|Buffer oriented
-Blocking IO|No Blocking IO
- |Selectors
+Buffer oriented|Stream oriented
+No Blocking IO|Blocking IO
+Selectors| 
 
 
