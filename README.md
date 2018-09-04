@@ -53,6 +53,7 @@ select 允许单线程，处理多个select。如果你打开多个连接(通道
 下面总结了NIO 和IO的主要区别
 
 IO|NIO
+---|---
 Stream oriented|Buffer oriented
 Blocking IO|No Blocking IO
  |Selectors
