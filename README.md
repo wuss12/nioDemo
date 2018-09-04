@@ -19,4 +19,4 @@ NIO 的新的工作方式
 **Channel 和 BUffer**
 基本上，所有的IO 都是从 channel 开始。Channel 有点像流，数据可以从Channel 中读取到 BUffer中，也
 可以从 Buffer中写入到 Channel 中，如下图。
-!(http://dl2.iteye.com/upload/attachment/0096/3970/e20c73df-9ade-3121-be5f-307e6baf328f.png)
+![Image text](http://dl2.iteye.com/upload/attachment/0096/3970/e20c73df-9ade-3121-be5f-307e6baf328f.png)
