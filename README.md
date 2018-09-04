@@ -19,4 +19,40 @@ NIO 的新的工作方式
 **Channel 和 BUffer**
 基本上，所有的IO 都是从 channel 开始。Channel 有点像流，数据可以从Channel 中读取到 BUffer中，也
 可以从 Buffer中写入到 Channel 中，如下图。
+---- 
 ![Image text](http://dl2.iteye.com/upload/attachment/0096/3970/e20c73df-9ade-3121-be5f-307e6baf328f.png)
+
+Channel 和 Buffer 有多种类型，以下介绍主要的几种类型
+
+* FileChannel 
+* DatagramChannel
+* SocketChannel
+* ServerSocketChannel
+
+以下是NIO中Buffer的常用实现
+* ByteBuffer
+* CharBuffer
+* DoubleBuffer
+* FloatBuffer
+* IntBuffer
+* LongBuffer
+* ShortBuffer
+这些Buffer 覆盖了常用的基本类型：byte,char,long,double ,float,int ,short
+
+**Selector** 
+select 允许单线程，处理多个select。如果你打开多个连接(通道)，但每个通道的流量都
+很低，使用Select 就会很方便。如下图：
+---
+![](http://dl2.iteye.com/upload/attachment/0096/3972/79224e12-3615-3917-9e85-42e7edbd8b40.png)
+
+要使用selector 首先需要往selector 注册Channel，然后调用他的Select()方法，这个方法会
+一直阻塞到，注册的通道有事件就绪。一旦这个方法返回，线程就可以处理这些事件。
+
+
+**java NIO  vs IO**
+下面总结了NIO 和IO的主要区别
+
+IO | NIO
+Stream oriented | Buffer oriented
+Blocking IO | No Blocking IO
+ | Selectors
