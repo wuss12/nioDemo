@@ -58,8 +58,11 @@ Buffer oriented|Stream oriented
 No Blocking IO|Blocking IO
 Selectors| 
 
+
 **NIO读取文件 解决中文乱码**
- `private static StringBuilder readFromFile(String filePath) throws IOException {
+
+ ```
+ private static StringBuilder readFromFile(String filePath) throws IOException {
         FileChannel fileChannel = FileChannel.open(Paths.get(filePath), StandardOpenOption.READ);
 
         ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
@@ -84,4 +87,5 @@ Selectors|
         }
         fileChannel.close();
         return sb;
-    }`
+    }
+    ```
