@@ -58,4 +58,31 @@ Buffer oriented|Stream oriented
 No Blocking IO|Blocking IO
 Selectors| 
 
+NIO读取文件 解决中文乱码
+ private static StringBuilder readFromFile(String filePath) throws IOException {
+        FileChannel fileChannel = FileChannel.open(Paths.get(filePath), StandardOpenOption.READ);
 
+        ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
+        CharBuffer charBuffer = CharBuffer.allocate(1024);
+
+        // 通过设置字符集的编码，并将ByteBuffer转换为CharBuffer来避免中文乱码
+        Charset charset = Charset.forName("UTF-8");
+        CharsetDecoder decoder = charset.newDecoder();
+
+        StringBuilder sb = new StringBuilder((int) fileChannel.size());
+
+        while (-1 != fileChannel.read(byteBuffer)){
+            byteBuffer.flip();
+            decoder.decode(byteBuffer, charBuffer, byteBuffer.limit() < 1024);
+
+            charBuffer.flip();
+//            System.out.println(charBuffer);
+            sb.append(charBuffer);
+            fileChannel.position(fileChannel.position()-byteBuffer.limit()+byteBuffer.position());
+            byteBuffer.clear();
+            charBuffer.clear();
+        }
+        fileChannel.close();
+        return sb;
+    }```
+```
