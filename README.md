@@ -61,7 +61,7 @@ Selectors|
 
 **NIO读取文件 解决中文乱码**
 
- ```
+ `
  private static StringBuilder readFromFile(String filePath) throws IOException {
         FileChannel fileChannel = FileChannel.open(Paths.get(filePath), StandardOpenOption.READ);
 
@@ -81,11 +81,11 @@ Selectors|
             charBuffer.flip();
 //            System.out.println(charBuffer);
             sb.append(charBuffer);
-            fileChannel.position(fileChannel.position()-byteBuffer.limit()+byteBuffer.position());
+            fileChannel.position(fileChannel.position()- (byteBuffer.limit()-byteBuffer.position()));
             byteBuffer.clear();
             charBuffer.clear();
         }
         fileChannel.close();
         return sb;
     }
-    ```
+  `
